@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Legion Sales Tracker</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" href="assets/icon.png" type="image/png">
+    <style>
+        /* General Styles */
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #000;
+            color: #fff;
+        }
+        .video-background video {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -1;
+        }
+        .dashboard, header, footer {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+        header img, footer img {
+            width: 100%;
+            border-radius: 10px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            text-align: center;
+            padding: 10px;
+        }
+        th {
+            background-color: #222;
+        }
+        tr {
+            transition: background-color 0.3s;
+        }
+        tr:hover {
+            background-color: rgba(255, 165, 0, 0.2);
+        }
+        .animate-section {
+            opacity: 0;
+            transform: translateY(50px);
+            animation: fadeInUp 1s forwards;
+        }
+        @keyframes fadeInUp {
+            0% {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        /* Responsive Styles */
+        @media (max-width: 768px) {
+            table {
+                font-size: 14px;
+            }
+            th, td {
+                padding: 5px;
+            }
+            header img, footer img {
+                height: auto;
+            }
+            .dashboard, header, footer {
+                padding: 10px;
+            }
+        }
+    </style>
+    <script>
+        // Fetch live FUEL price from CoinGecko API
+        async function fetchFuelPrice() {
+            const apiUrl = "https://api.coingecko.com/api/v3/simple/price?ids=fuel-network&vs_currencies=usd";
+            try {
+                const response = await fetch(apiUrl);
+                if (!response.ok) throw new Error("Failed to fetch price");
+                const data = await response.json();
+                const fuelPrice = data["fuel-network"]["usd"];
+                document.getElementById("fuel-price").textContent = `$${fuelPrice.toFixed(6)}`;
+
+                // Dynamically calculate PnL for FUEL in percentage
+                const buyPrice = 0.02;
+                const pnlPercentage = ((fuelPrice - buyPrice) / buyPrice) * 100;
+                document.getElementById("fuel-pnl").textContent = `PnL: ${pnlPercentage.toFixed(2)}%`;
+            } catch (error) {
+                console.error("Error fetching FUEL price:", error);
+                document.getElementById("fuel-price").textContent = "Error fetching price";
+            }
+        }
+
+        // Call the fetch function when the page loads
+        window.onload = () => {
+            fetchFuelPrice();
+        };
+    </script>
+</head>
+<body>
+    <div class="video-background">
+        <video autoplay muted loop>
+            <source src="assets/background.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+    </div>
+
+    <section id="dashboard" class="dashboard animate-section">
+        <h2>Dashboard</h2>
+        <table class="sales-table">
+            <thead>
+                <tr>
+                    <th>Token</th>
+                    <th>Logo</th>
+                    <th>Date</th>
+                    <th>Buy Price</th>
+                    <th>Current Price</th>
+                    <th>PnL</th>
+                </tr>
+            </thead>
+            <tbody>
+
+                <tr style="border: 1px solid orange;">
+                    <td>Fuel</td>
+                    <td><img src="assets/fuel_logo.png" alt="Fuel Logo" class="project-logo" style="height: 40px;"></td>
+                    <td>2024-12-19</td>
+                    <td>$0.02</td>
+                    <td id="fuel-price">Fetching...</td>
+                    <td id="fuel-pnl">Calculating...</td>
+                </tr>
+
+                <tr style="border: 1px solid orange;">
+                    <td>ALMANAK</td>
+                    <td><img src="assets/almanak_logo.png" alt="ALMANAK Logo" class="project-logo" style="height: 40px;"></td>
+                    <td>TBD</td>
+                    <td>$TBD</td>
+                    <td id="fuel-price">Fetching...</td>
+                    <td id="fuel-pnl">Calculating...</td>
+                </tr>
+
+                <tr style="border: 1px solid orange;">
+                    <td>Pulse</td>
+                    <td><img src="assets/pulse_logo.png" alt="Pulse Logo" class="project-logo" style="height: 40px;"></td>
+                    <td>TBD</td>
+                    <td>$TBD</td>
+                    <td id="fuel-price">Fetching...</td>
+                    <td id="fuel-pnl">Calculating...</td>
+                </tr>
+
+                <tr style="border: 1px solid orange;">
+                    <td>Silencio</td>
+                    <td><img src="assets/silencio_logo.png" alt="Silencio Logo" class="project-logo" style="height: 40px;"></td>
+                    <td>TBD</td>
+                    <td>$TBD</td>
+                    <td id="fuel-price">Fetching...</td>
+                    <td id="fuel-pnl">Calculating...</td>
+                </tr>
+
+                <tr style="border: 1px solid orange;">
+                    <td>Enclave</td>
+                    <td><img src="assets/enclave_logo.png" alt="Enclave Logo" class="project-logo" style="height: 40px;"></td>
+                    <td>TBD</td>
+                    <td>$TBD</td>
+                    <td id="fuel-price">Fetching...</td>
+                    <td id="fuel-pnl">Calculating...</td>
+                </tr>
+
+            </tbody>
+        </table>
+    </section>
+
+    <header class="animate-section">
+        <img src="assets/header_image.webp" alt="Legion Header">
+    </header>
+
+    <footer class="animate-section">
+        <img src="assets/footer_image.png" alt="Footer Image">
+        <p>&copy; 2023 Legion Sales Tracker. All rights reserved.</p>
+    </footer>
+</body>
+</html>
