@@ -5,10 +5,6 @@ body {
     color: #fff;
     background-color: #121212;
 }
- a {
-            color: inherit; /* Inherits color from the parent element */
-            text-decoration: none; /* Removes underline */
-        }
  a:hover {
     color: green; 
 }
