@@ -81,43 +81,61 @@
             }
         }
     </style>
-    <script>
-        // Fetch live FUEL price from CoinGecko API
-        async function fetchFuelPrice() {
-            const apiUrl = "https://api.coingecko.com/api/v3/simple/price?ids=fuel-network&vs_currencies=usd";
-            try {
-                const response = await fetch(apiUrl);
-                if (!response.ok) throw new Error("Failed to fetch price");
-                const data = await response.json();
-                const fuelPrice = data["fuel-network"]["usd"];
-                document.getElementById("fuel-price").textContent = `$${fuelPrice.toFixed(6)}`;
-
-                // Dynamically calculate PnL for FUEL in percentage
-                const buyPrice = 0.02;
-                const pnlPercentage = ((fuelPrice - buyPrice) / buyPrice) * 100;
-                document.getElementById("fuel-pnl").textContent = `ROI: ${pnlPercentage.toFixed(2)}%`;
-            } catch (error) {
-                console.error("Error fetching FUEL price:", error);
-                document.getElementById("fuel-price").textContent = "Error fetching price";
-            }
-        }
-
-        // Call the fetch function when the page loads
-        window.onload = () => {
-            fetchFuelPrice();
-        };
-    </script>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fuel Network ROI Calculator</title>
 </head>
 <body>
-    <div class="video-background">
+   <script>
+    // Function to fetch live FUEL price and calculate ROI
+    async function fetchFuelPrice() {
+        const apiUrl = "https://api.coingecko.com/api/v3/simple/price?ids=fuel-network&vs_currencies=usd";
+        const buyPrice = 0.02;  // The price at which the asset was bought
+
+        try {
+            // Fetch the live price from the API
+            const response = await fetch(apiUrl);
+            if (!response.ok) throw new Error("Failed to fetch price. Please try again later.");
+            
+            const data = await response.json();
+            const fuelPrice = data["fuel-network"]["usd"];
+            if (!fuelPrice) throw new Error("Price data not available.");
+
+            // Display the fetched price
+            document.getElementById("fuel-price").textContent = `$${fuelPrice.toFixed(6)}`;
+
+            // Calculate and display ROI
+            const roiPercentage = ((fuelPrice - buyPrice) / buyPrice) * 100 +100;
+            document.getElementById("fuel-roi").textContent = `ROI: ${roiPercentage.toFixed(2)}%`;
+        } catch (error) {
+            console.error("Error fetching FUEL price:", error);
+            document.getElementById("fuel-price").textContent = "Price unavailable";
+            document.getElementById("fuel-roi").textContent = "ROI calculation unavailable";
+        }
+    }
+
+    // Fetch price and calculate ROI when the DOM is fully loaded
+    document.addEventListener("DOMContentLoaded", fetchFuelPrice);
+</script>
+
+</body>
+</html>
+
+
+</head>
+<body>
+    <!--<div class="video-background">
         <video autoplay muted loop>
             <source src="assets/background.mp4" type="video/mp4">
             Your browser does not support the video tag.
         </video>
-    </div>
+    </div>-->
 
     <section id="dashboard" class="dashboard animate-section">
-        <h2>Dashboard</h2>
+    <img src="assets/legion.png" alt="Legion Logo">
         <table class="sales-table">
             <thead>
                 <tr>
@@ -132,25 +150,32 @@
             <tbody>
 
                 <tr style="border: 1px solid orange;">
-                    <td><a href="https://dropstab.com/coins/fuel" target="_blank">Fuel Network</a></td>
+                    <td>
+                        <a href="https://dropstab.com/coins/fuel" target="_blank">Fuel Network</a>
+                    </td>
                     <td><img src="assets/fuel_logo.png" alt="Fuel Logo" class="project-logo" style="height: 50px;"></td>
                     <td>2024-12-19</td>
                     <td>$0.02</td>
                     <td id="fuel-price">Fetching...</td>
-                    <td id="fuel-pnl">Calculating...</td>
+                    <td id="fuel-roi">Calculating...</td>
                 </tr>
 
+
                 <tr style="border: 1px solid orange;">
-                    <td>ALMANAK</td>
+                    <td>
+                        ALMANAK
+                    </td>
                     <td><img src="assets/almanak_logo.png" alt="ALMANAK Logo" class="project-logo" style="height: 50px;"></td>
                     <td>Pending TGE</td>
                     <td>--</td>
                     <td id="fuel-price">Pending TGE</td>
-                    <td id="fuel-pnl">Pending TGE</td>
+                    <td id="fuel-roi">Pending TGE</td>
                 </tr>
 
                 <tr style="border: 1px solid orange;">
-                    <td>Pulse</td>
+                    <td>
+                        Pulse
+                    </td>
                     <td><img src="assets/pulse_logo.png" alt="Pulse Logo" class="project-logo" style="height: 50px;"></td>
                     <td>Pending TGE</td>
                     <td>--</td>
@@ -168,7 +193,9 @@
                 </tr>
 
                 <tr style="border: 1px solid orange;">
-                    <td>Enclave</td>
+                    <td>
+                        Enclave
+                    </td>
                     <td><img src="assets/enclave_logo.png" alt="Enclave Logo" class="project-logo" style="height: 50px;"></td>
                     <td>Pending TGE</td>
                     <td>--</td>
@@ -176,7 +203,9 @@
                     <td id="fuel-pnl">Pending TGE</td>
 
                 <tr style="border: 1px solid orange;">
-                    <td>Corn</td>
+                    <td>
+                        Corn
+                    </td>
                     <td><img src="assets/corn_logo.png" alt="Enclave Logo" class="project-logo" style="height: 50px;"></td>
                     <td>Upcoming ICO</td>
                     <td>--</td>

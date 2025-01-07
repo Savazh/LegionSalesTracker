@@ -1,14 +1,40 @@
 body {
-    font-family: Arial, sans-serif;
+    font-family: Arial, sans-serif ;
     margin: 0;
     padding: 0;
-    color: #fff;
-    background-color: #121212;
-}
- a:hover {
-    color: green; 
+    color: #FF4F33;
+    background-color: #000000;
+    
 }
 
+h2 {
+            text-align: center; /* Align text in the center */
+            display: flex;
+            justify-content: center; /* Horizontally center content */
+            align-items: center; /* Vertically center content */
+            margin: 0; /* Optional: Remove margin for better alignment */
+        }
+
+        h2 img {
+            max-width: 100%; /* Ensures the image doesn't overflow */
+            height: auto; /* Maintain the image aspect ratio */
+        }
+
+tr a {
+            color: inherit;
+            text-decoration: none;
+            transition: all 0.3s ease;
+}
+
+tr a:hover {
+            color: #9ed870;  /* Change to green when hovered */
+            text-decoration: underline; /* Optional: Add underline when hovered */
+            transform: scale(1.1); /* Slight zoom effect */
+        }
+
+.table_font {
+    color: #FF4F33;
+}
 .video-background {
     position: fixed;
     top: 0;
