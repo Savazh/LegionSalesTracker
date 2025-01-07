@@ -2,9 +2,8 @@ body {
     font-family: Arial, sans-serif ;
     margin: 0;
     padding: 0;
-    color: #FF4F33;
+    color: #fff;
     background-color: #000000;
-    
 }
 
 h2 {
@@ -32,9 +31,6 @@ tr a:hover {
             transform: scale(1.1); /* Slight zoom effect */
         }
 
-.table_font {
-    color: #FF4F33;
-}
 .video-background {
     position: fixed;
     top: 0;
@@ -88,6 +84,15 @@ header .logo img {
 .dashboard {
     padding: 20px;
 }
+
+.with-margin {
+    margin: 20px; /* Добавляет отступ сверху для данного элемента */
+}
+
+.svg_logo {
+            width: 15vw; /* 20% of the viewport width */
+            height: auto; /* Maintain aspect ratio */
+        }
 .summary-cards {
     display: flex;
     justify-content: space-around;
