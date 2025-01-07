@@ -11,7 +11,7 @@ h2 {
             display: flex;
             justify-content: center; /* Horizontally center content */
             align-items: center; /* Vertically center content */
-            margin: 0; /* Optional: Remove margin for better alignment */
+            margin: 10; /* Optional: Remove margin for better alignment */
         }
 
         h2 img {
