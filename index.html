@@ -95,7 +95,7 @@
                 // Dynamically calculate PnL for FUEL in percentage
                 const buyPrice = 0.02;
                 const pnlPercentage = ((fuelPrice - buyPrice) / buyPrice) * 100;
-                document.getElementById("fuel-pnl").textContent = `PnL: ${pnlPercentage.toFixed(2)}%`;
+                document.getElementById("fuel-pnl").textContent = `ROI: ${pnlPercentage.toFixed(2)}%`;
             } catch (error) {
                 console.error("Error fetching FUEL price:", error);
                 document.getElementById("fuel-price").textContent = "Error fetching price";
@@ -126,14 +126,14 @@
                     <th>Date</th>
                     <th>Buy Price</th>
                     <th>Current Price</th>
-                    <th>PnL</th>
+                    <th>ROI</th>
                 </tr>
             </thead>
             <tbody>
 
                 <tr style="border: 1px solid orange;">
                     <td>Fuel</td>
-                    <td><img src="assets/fuel_logo.png" alt="Fuel Logo" class="project-logo" style="height: 40px;"></td>
+                    <td><img src="assets/fuel_logo.png" alt="Fuel Logo" class="project-logo" style="height: 50px;"></td>
                     <td>2024-12-19</td>
                     <td>$0.02</td>
                     <td id="fuel-price">Fetching...</td>
@@ -142,38 +142,46 @@
 
                 <tr style="border: 1px solid orange;">
                     <td>ALMANAK</td>
-                    <td><img src="assets/almanak_logo.png" alt="ALMANAK Logo" class="project-logo" style="height: 40px;"></td>
-                    <td>TBD</td>
-                    <td>$TBD</td>
-                    <td id="fuel-price">Fetching...</td>
-                    <td id="fuel-pnl">Calculating...</td>
+                    <td><img src="assets/almanak_logo.png" alt="ALMANAK Logo" class="project-logo" style="height: 50px;"></td>
+                    <td>Pending TGE</td>
+                    <td>--</td>
+                    <td id="fuel-price">Pending TGE</td>
+                    <td id="fuel-pnl">Pending TGE</td>
                 </tr>
 
                 <tr style="border: 1px solid orange;">
                     <td>Pulse</td>
-                    <td><img src="assets/pulse_logo.png" alt="Pulse Logo" class="project-logo" style="height: 40px;"></td>
+                    <td><img src="assets/pulse_logo.png" alt="Pulse Logo" class="project-logo" style="height: 50px;"></td>
                     <td>TBD</td>
-                    <td>$TBD</td>
-                    <td id="fuel-price">Fetching...</td>
-                    <td id="fuel-pnl">Calculating...</td>
+                    <td>--</td>
+                    <td id="fuel-price">Pending TGE</td>
+                    <td id="fuel-pnl">Pending TGE</td>
                 </tr>
 
                 <tr style="border: 1px solid orange;">
                     <td>Silencio</td>
-                    <td><img src="assets/silencio_logo.png" alt="Silencio Logo" class="project-logo" style="height: 40px;"></td>
-                    <td>TBD</td>
-                    <td>$TBD</td>
-                    <td id="fuel-price">Fetching...</td>
-                    <td id="fuel-pnl">Calculating...</td>
+                    <td><img src="assets/silencio_logo.png" alt="Silencio Logo" class="project-logo" style="height: 50px;"></td>
+                    <td>Pending TGE</td>
+                    <td>--</td>
+                    <td id="fuel-price">Pending TGE</td>
+                    <td id="fuel-pnl">Pending TGE</td>
                 </tr>
 
                 <tr style="border: 1px solid orange;">
                     <td>Enclave</td>
-                    <td><img src="assets/enclave_logo.png" alt="Enclave Logo" class="project-logo" style="height: 40px;"></td>
-                    <td>TBD</td>
-                    <td>$TBD</td>
-                    <td id="fuel-price">Fetching...</td>
-                    <td id="fuel-pnl">Calculating...</td>
+                    <td><img src="assets/enclave_logo.png" alt="Enclave Logo" class="project-logo" style="height: 50px;"></td>
+                    <td>Pending TGE</td>
+                    <td>--</td>
+                    <td id="fuel-price">Pending TGE</td>
+                    <td id="fuel-pnl">Pending TGE</td>
+
+                <tr style="border: 1px solid orange;">
+                    <td>Corn</td>
+                    <td><img src="assets/corn_logo.png" alt="Enclave Logo" class="project-logo" style="height: 50px;"></td>
+                    <td>Upcoming ICO</td>
+                    <td>--</td>
+                    <td id="fuel-price">Upcoming ICO</td>
+                    <td id="fuel-pnl">Upcoming ICO</td>
                 </tr>
 
             </tbody>
